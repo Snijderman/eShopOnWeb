@@ -50,29 +50,29 @@ namespace Microsoft.eShopWeb.RazorPages
             ConfigureServices(services);
         }
 
-        public void ConfigureProductionServices(IServiceCollection services)
-        {
-            // use real database
-            services.AddDbContext<CatalogContext>(c =>
-            {
-                try
-                {
-                    // Requires LocalDB which can be installed with SQL Server Express 2016
-                    // https://www.microsoft.com/en-us/download/details.aspx?id=54284
-                    c.UseSqlServer(Configuration.GetConnectionString("CatalogConnection"));
-                }
-                catch (System.Exception ex)
-                {
-                    var message = ex.Message;
-                }
-            });
+        //public void ConfigureProductionServices(IServiceCollection services)
+        //{
+        //    // use real database
+        //    services.AddDbContext<CatalogContext>(c =>
+        //    {
+        //        try
+        //        {
+        //            // Requires LocalDB which can be installed with SQL Server Express 2016
+        //            // https://www.microsoft.com/en-us/download/details.aspx?id=54284
+        //            c.UseSqlServer(Configuration.GetConnectionString("CatalogConnection"));
+        //        }
+        //        catch (System.Exception ex)
+        //        {
+        //            var message = ex.Message;
+        //        }
+        //    });
 
-            // Add Identity DbContext
-            services.AddDbContext<AppIdentityDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
+        //    // Add Identity DbContext
+        //    services.AddDbContext<AppIdentityDbContext>(options =>
+        //        options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
 
-            ConfigureServices(services);
-        }
+        //    ConfigureServices(services);
+        //}
 
         public void ConfigureServices(IServiceCollection services)
         {
